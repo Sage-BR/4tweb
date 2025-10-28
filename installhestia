@@ -9,6 +9,8 @@ ulimit -HSn 32768
 
 apt install curl -y
 
+apt install ca-certificates -y
+
 bash <(curl -s https://raw.githubusercontent.com/Sage-BR/4tweb/refs/heads/main/rc-local.txt)
 
 mkdir -p /backup/var/
