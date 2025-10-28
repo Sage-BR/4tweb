@@ -1,0 +1,22 @@
+#!/bin/bash
+apt update
+apt -y dist-upgrade
+apt -y autoremove
+apt clean
+apt purge -y $(dpkg -l | awk '/^rc/ { print $2 }')
+
+ulimit -HSn 32768
+
+apt install curl -y
+
+bash <(curl -s https://raw.githubusercontent.com/SageSBR/4master/main/rc-local.txt)
+
+mkdir -p /backup/var/
+wget https://raw.githubusercontent.com/SageSBR/4master/main/limpvar.sh;chmod +x /root/limpvar.sh
+
+wget https://raw.githubusercontent.com/SageSBR/4master/main/mem.sh;chmod +x /root/mem.sh
+
+wget https://raw.githubusercontent.com/SageSBR/4master/main/update.sh; chmod +x update.sh
+
+wget https://raw.githubusercontent.com/hestiacp/hestiacp/release/install/hst-install.sh;chmod +x /root/hst-install.sh
+bash hst-install.sh --lang 'pt-br' --hostname 'host.4teambr.com' --username '4teambr' --email '' --password '' --multiphp '5.4,7.4,8.0,8.1,8.2' --vsftpd no --proftpd yes --quota yes --force
