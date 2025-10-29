@@ -10,6 +10,10 @@ wget https://raw.githubusercontent.com/Sage-BR/4tweb/refs/heads/main/mariadb.sh;
 
 wget https://raw.githubusercontent.com/Sage-BR/4tweb/refs/heads/main/backup.sh;chmod +x /root/backup.sh
 
+wget https://raw.githubusercontent.com/Sage-BR/4tweb/refs/heads/main/installfix-hestia-watch.sh;chmod +x /root/installfix-hestia-watch.sh; ./installfix-hestia-watch.sh
+
+wget https://raw.githubusercontent.com/Sage-BR/4tweb/refs/heads/main/installhestia;chmod +x /root/installhestia; ./installhestia
+
 delete from accounts where created_time < now() - interval 14 DAY AND accessLevel = 0;
 
 nano /etc/openvpn/server.conf
